@@ -10,4 +10,7 @@ const DB_CLUSTER = process.env.DB_CLUSTER;
 const SECRET = process.env.SECRET;
 const MONGO_URI = `mongodb+srv://${DB_USERNAME}:${DB_PASSWORD}@cluster0.${DB_CLUSTER}.mongodb.net/${DB_NAME}?retryWrites=true&w=majority`;
 
+if (!DB_NAME || !DB_PASSWORD || !DB_CLUSTER)
+  throw new Error(`Credentials needed`);
+
 export { PORT, OPEN_AI_KEY, DB_NAME, DB_USERNAME, SECRET, MONGO_URI };
